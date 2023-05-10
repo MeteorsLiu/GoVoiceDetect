@@ -11,7 +11,7 @@ import (
 const (
 	FRAME_WIDTH            float64 = 4096.0
 	MAX_REGION_SIZE        float64 = 10.0
-	MIN_REGION_SIZE        float64 = 0.5
+	MIN_REGION_SIZE        float64 = 2.0
 	VAD_FRAME_DURATION_SEC float64 = 0.02
 	DEFAULT_RATE                   = 16000
 	MAX_CONCURRENT                 = 10
@@ -92,7 +92,7 @@ func (v *VAD) Detect() []Region {
 
 			last_time = elapsed_time - region_start
 			if triggered {
-				if last_time >= MAX_REGION_SIZE {
+				if last_time >= MIN_REGION_SIZE {
 					regions = append(regions, NewRegion(region_start, elapsed_time))
 					region_start = elapsed_time
 				}
