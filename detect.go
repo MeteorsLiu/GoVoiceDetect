@@ -88,6 +88,7 @@ func (v *VAD) Detect() []Region {
 			elapsed_time += chunkDuration
 			if frameActive {
 				active_size++
+				log.Println("Active Size", active_size, window_size, elapsed_time)
 			}
 			//last_time = elapsed_time - region_start
 
@@ -110,9 +111,6 @@ func (v *VAD) Detect() []Region {
 					active_size = 0
 				}
 			}*/
-			if active_size > 0.9*window_size {
-				log.Println("Active Size", active_size, window_size, elapsed_time)
-			}
 		}
 		if err != nil {
 			if err != io.EOF {
