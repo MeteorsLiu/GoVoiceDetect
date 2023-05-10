@@ -72,7 +72,7 @@ func (v *VAD) Detect() []Region {
 	if err != nil {
 		log.Fatal(err)
 	}
-	var region_start float64
+	//var region_start float64
 	var elapsed_time float64
 	//var last_time float64
 	var window_size float64
@@ -111,7 +111,7 @@ func (v *VAD) Detect() []Region {
 				}
 			}*/
 			if active_size > 0.9*window_size {
-				log.Println("Active Size", active_size, window_size)
+				log.Println("Active Size", active_size, window_size, elapsed_time)
 			}
 		}
 		if err != nil {
