@@ -91,7 +91,7 @@ func (v *VAD) Detect() []Region {
 			}
 			last_time = elapsed_time - region_start
 
-			if triggered {
+			/*if triggered {
 				if last_time >= MIN_REGION_SIZE {
 					regions = append(regions, NewRegion(region_start, elapsed_time))
 					region_start = elapsed_time
@@ -109,6 +109,9 @@ func (v *VAD) Detect() []Region {
 					window_size = 0
 					active_size = 0
 				}
+			}*/
+			if active_size > 0.9*window_size {
+				log.Println("Active Size", active_size, window_size)
 			}
 		}
 		if err != nil {
