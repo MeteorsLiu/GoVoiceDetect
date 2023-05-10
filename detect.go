@@ -74,10 +74,10 @@ func (v *VAD) Detect() []Region {
 	}
 	var region_start float64
 	var elapsed_time float64
-	var last_time float64
+	//var last_time float64
 	var window_size float64
 	var active_size float64
-	var triggered bool
+	//var triggered bool
 	var regions []Region
 
 	for {
@@ -89,7 +89,7 @@ func (v *VAD) Detect() []Region {
 			if frameActive {
 				active_size++
 			}
-			last_time = elapsed_time - region_start
+			//last_time = elapsed_time - region_start
 
 			/*if triggered {
 				if last_time >= MIN_REGION_SIZE {
