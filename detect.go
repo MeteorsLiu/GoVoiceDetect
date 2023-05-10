@@ -72,12 +72,12 @@ func (v *VAD) Detect() []Region {
 	if err != nil {
 		log.Fatal(err)
 	}
-	//var region_start float64
+	var region_start float64
 	var elapsed_time float64
-	//var last_time float64
+	var last_time float64
 	var window_size float64
 	var active_size float64
-	//var triggered bool
+	var triggered bool
 	var regions []Region
 
 	for {
@@ -89,28 +89,27 @@ func (v *VAD) Detect() []Region {
 			if frameActive {
 				active_size++
 			}
-			log.Println("Active Size", active_size/window_size, elapsed_time)
-			//last_time = elapsed_time - region_start
 
-			/*if triggered {
+			last_time = elapsed_time - region_start
+			if triggered {
 				if last_time >= MIN_REGION_SIZE {
 					regions = append(regions, NewRegion(region_start, elapsed_time))
 					region_start = elapsed_time
 				}
-				if active_size < 0.9*window_size {
+				if active_size < 10 {
 					region_start = elapsed_time
 					triggered = false
 					window_size = 0
 					active_size = 0
 				}
 			} else {
-				if active_size > 0.9*window_size {
+				if active_size > 10 {
 					region_start = elapsed_time
 					triggered = true
 					window_size = 0
 					active_size = 0
 				}
-			}*/
+			}
 
 		}
 		if err != nil {
