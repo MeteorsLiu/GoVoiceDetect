@@ -36,7 +36,7 @@ func NewRegion(start, end float64) Region {
 
 func verbose(c ...any) {
 	if VERBOSE {
-		log.Println(c)
+		log.Println(c...)
 	}
 }
 
